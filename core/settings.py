@@ -42,10 +42,14 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = ['django_bootstrap5',
-                    'django_browser_reload',]
+THIRD_PARTY_APPS = [
+    'django_bootstrap5',
+    'django_browser_reload',
+]
 
-MY_APPS = ['website',]
+MY_APPS = [
+    'website',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
@@ -57,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -85,8 +90,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     # 'default': db_url.parse(config('DATABASE_URL'))
-    'default': config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
-        cast=db_url,)
+    'default': config(
+        'DATABASE_URL',
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        cast=db_url,
+    )
 }
 
 
